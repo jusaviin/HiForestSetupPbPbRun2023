@@ -12,6 +12,14 @@ scram build -j8
 voms-proxy-init --voms cms
 ```
 
+The following recipe will add B/D-finder to the configuration:
+```bash
+cd $CMSSW_BASE/src
+git clone -b 13XX_miniAOD https://github.com/milanchestojanovic/Bfinder.git --depth 1
+source Bfinder/test/DnBfinder_to_Forest_132X_miniAOD.sh
+scram build -j8
+```
+
 For production, it is a good idea to create a production branch and commit all the changes every time before running production, so that the exact configuration used for the production can be traced back if needed. 
 ```bash
 git checkout -b rapidValidationForest2023
@@ -21,11 +29,13 @@ git checkout -b rapidValidationForest2023
 
 To test the configuration, you will first need to obtain a sample input file from the dataset you are running over. Then update this input file to the the configuration file
 ```bash
-vim forest_miniAOD_run3_DATA.py
+vim forest_miniAOD_run3_DATA.py  # Without D-finder
+vim forest_miniAOD_run3_DATA_wDfinder.py  # With D-finder
 ```
 Now you can run the configuration interactively to ensure that it works for your file:
 ```bash
-cmsRun forest_miniAOD_run3_DATA.py
+cmsRun forest_miniAOD_run3_DATA.py  # Without D-finder
+cmsRun forest_miniAOD_run3_DATA_wDfinder.py  # With D-finder
 ```
 
 ## Submit the jobs with crab
