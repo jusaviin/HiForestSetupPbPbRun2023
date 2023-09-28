@@ -27,7 +27,14 @@ git checkout -b rapidValidationForest2023
 
 ## Test the configuration
 
-To test the configuration, you will first need to obtain a sample input file from the dataset you are running over. Then update this input file to the the configuration file
+To test the configuration, you will first need to obtain a sample input file from the dataset you are running over. Easy way to get a file list for a dataset of your choice is the following:
+
+```bash
+ls /eos/cms/store/group/phys_heavyions/wangj/RECO2023/miniaod_PhysicsHIPhysicsRawPrime0_374322/* > fileListHIPhysicsRawPrime0_run374322.txt
+sed -i -e "s#/eos/cms#root://eoscms.cern.ch/#" fileListHIPhysicsRawPrime0_run374322.txt
+```
+
+Then update this input file to the the configuration file
 ```bash
 vim forest_miniAOD_run3_DATA.py  # Without D-finder
 vim forest_miniAOD_run3_DATA_wDfinder.py  # With D-finder
@@ -71,3 +78,8 @@ crab submit -c crabForestTemplate.py
 ```
 
 When the jobs are finished, you should document in the Twiki page https://twiki.cern.ch/twiki/bin/view/CMS/HiForest2023 that the forest is done, and for each forest add the git link for the configuration that was used to create the said forest. Example link for a commit looks like this: https://github.com/jusaviin/cmssw/tree/250185e12b917d36fd8d3a51208e5f8311f3ad92.
+
+CRAB likes to create a long structure of unnecessary folders for the output files. It is a good idea to trunkate this structure, since CRAB also has a lenght limit for input files, and a long file structure might cause errors in subsequent job submission. The following command will do the trick:
+```bash
+eos file rename /eos/cms/store/group/phys_heavyions/jviinika/run3RapidValidation/PbPb2023_run374322_HIExpressRawPrime_withDFinder_2023-09-27/CRAB_UserFiles/crab_PbPb2023_run374322_HIExpressRawPrime_withDFinder_2023-09-27/230928_014852/0000 /eos/cms/store/group/phys_heavyions/jviinika/run3RapidValidation/PbPb2023_run374322_HIExpressRawPrime_withDFinder_2023-09-27/0000
+```
