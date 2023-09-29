@@ -83,3 +83,12 @@ CRAB likes to create a long structure of unnecessary folders for the output file
 ```bash
 eos file rename /eos/cms/store/group/phys_heavyions/jviinika/run3RapidValidation/PbPb2023_run374322_HIExpressRawPrime_withDFinder_2023-09-27/CRAB_UserFiles/crab_PbPb2023_run374322_HIExpressRawPrime_withDFinder_2023-09-27/230928_014852/0000 /eos/cms/store/group/phys_heavyions/jviinika/run3RapidValidation/PbPb2023_run374322_HIExpressRawPrime_withDFinder_2023-09-27/0000
 ```
+
+## Submit jobs with ZDC emap file
+
+Currently (2023-09-29) the ZDC energy calibration needs to be manually. For this, an energy map configuration file needs to be included in the CRAB jobs. To be able to do this, you will need to copy the files
+```
+crabForestTemplateWithEmap.py
+submitScript.sh
+```
+to your production area. The difference to the default CRAB configuration is that instead of running the regular python configuration, CRAB will now be configured to run ```submitScript.sh``` instead. Also the emap file will be shipped together with the regular forest files to the CRAB server. The script moves the emap file to location where it can be found by cmsRun, and then executes cmsRun. Using this setup will properly calibrate ZDC digis.
