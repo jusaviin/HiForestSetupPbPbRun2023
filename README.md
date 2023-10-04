@@ -92,3 +92,8 @@ crabForestTemplateWithEmap.py
 submitScript.sh
 ```
 to your production area. The difference to the default CRAB configuration is that instead of running the regular python configuration, CRAB will now be configured to run ```submitScript.sh``` instead. Also the emap file will be shipped together with the regular forest files to the CRAB server. The script moves the emap file to location where it can be found by cmsRun, and then executes cmsRun. Using this setup will properly calibrate ZDC digis.
+
+Notice that for local running, you will need to make a copy of the emap file in a location where FileInPath searches for it. This can be achieved in the test folder doing
+```bash
+cp emap_2023_newZDC_v3.txt ../../../
+```
