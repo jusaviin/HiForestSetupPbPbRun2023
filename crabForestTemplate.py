@@ -18,6 +18,7 @@ config.JobType.pluginName = 'Analysis'
 config.JobType.psetName = 'forest_miniAOD_run3_DATA.py'
 config.JobType.maxMemoryMB = 2500
 config.JobType.maxJobRuntimeMin = 300
+config.JobType.inputFiles = ['CentralityTable_HFtowers200_DataPbPb_periHYDJETshape_run3v1302x04_offline_374289.db']
 config.JobType.allowUndistributedCMSSW = True
 
 config.section_("Data")

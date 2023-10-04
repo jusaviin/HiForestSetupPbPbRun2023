@@ -19,7 +19,7 @@ config.JobType.psetName = 'forest_miniAOD_run3_DATA.py'
 config.JobType.maxMemoryMB = 2500
 config.JobType.maxJobRuntimeMin = 300
 config.JobType.scriptExe = 'submitScript.sh'
-config.JobType.inputFiles = ['emap_2023_newZDC_v3.txt']
+config.JobType.inputFiles = ['emap_2023_newZDC_v3.txt','CentralityTable_HFtowers200_DataPbPb_periHYDJETshape_run3v1302x04_offline_374289.db']
 config.JobType.allowUndistributedCMSSW = True
 
 config.section_("Data")
