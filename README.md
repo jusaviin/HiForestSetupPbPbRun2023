@@ -97,3 +97,9 @@ Notice that for local running, you will need to make a copy of the emap file in 
 ```bash
 cp emap_2023_newZDC_v3.txt ../../../
 ```
+
+## Helpful scripts
+
+There are a couple of helpful bash scripts included in this directory that can make life easier in certain occasions. If you want to create a forest using prompt reconstruction files for certain run, you can easily create a file list with ```findFilesForRun.sh``` by defining primary dataset and run number. Running it without arguments print usage help.
+
+Another script is for merging all .root files in a specific folder, that can be either local or at CERN EOS. This is called ```addHistograms.sh```. Again, running the script without arguments gives you usage instructions for this script.
